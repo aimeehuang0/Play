@@ -25,17 +25,17 @@ public class SquareGrid : MonoBehaviour {
 				if (walkable)
 				{
 					//  Debug.Log(unityRef.unity[6 * i + j].name);
-					isometricmanger.unitys[x * GridSize + y].GetComponent<SpriteRenderer>().color = Color.white;
+					//isometricmanger.unitys[x * GridSize + y].GetComponent<SpriteRenderer>().color = Color.white;
 
 				}
 				else {
-					isometricmanger.unitys[x * GridSize + y].GetComponent<SpriteRenderer>().color = Color.red;
+					//isometricmanger.unitys[x * GridSize + y].GetComponent<SpriteRenderer>().color = Color.red;
 				}
 
 				bool triggerable = isometricmanger.unitys[x * GridSize + y].trigger;
 				if (triggerable)
 				{
-					isometricmanger.unitys[x * GridSize + y].GetComponent<SpriteRenderer>().color = Color.blue;
+					//isometricmanger.unitys[x * GridSize + y].GetComponent<SpriteRenderer>().color = Color.blue;
 				}
 
 			}

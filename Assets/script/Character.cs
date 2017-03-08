@@ -12,6 +12,9 @@ public class Character : MonoBehaviour {
 	static int steps = 0;
 	public Text textarea;
 	public Text gameovertext;
+	public GameObject _gameOver;
+	public GameObject _restart;
+	public GameObject _congrats;
 	private bool gameover;
 	private bool restart;
 
@@ -30,9 +33,15 @@ public class Character : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameover = false;
-		restart = false;
+		_gameOver.SetActive(false);
+		_restart.SetActive(false);
+		_congrats.SetActive(false);
+
 		gameovertext.text = "";
+
+		if(Application.loadedLevelName == "Level01"){
+			notifMe.Notification("Be careful where you walk");
+		}
 
 		if(Application.loadedLevelName == "Level03"){
 			if(startpos == 1){
@@ -52,6 +61,13 @@ public class Character : MonoBehaviour {
 			}
 		}
 	}
+
+//	void Awake() {
+//		DontDestroyOnLoad(_gameOver);
+//		DontDestroyOnLoad(_restart);
+//		DontDestroyOnLoad(_congrats);
+//	}
+
 	public List<Node> path;
 
 	// Update is called once per frame
@@ -134,8 +150,8 @@ public class Character : MonoBehaviour {
 			float moveStart =currentStanding.localPosition.y-.2f;
 			float moveEnd =moveStart+.2f;
 
-			LeanTween.moveY(currentStanding.gameObject,moveStart,.2f).setDelay(.1f).setOnComplete(delegate() {
-				LeanTween.moveY(currentStanding.gameObject,moveEnd,.2f);
+			LeanTween.moveY(currentStanding.gameObject,moveStart,.3f).setDelay(.1f).setOnComplete(delegate() {
+				LeanTween.moveY(currentStanding.gameObject,moveEnd,.3f);
 				inAnimation = false;
 			});;
 		}
@@ -155,10 +171,12 @@ public class Character : MonoBehaviour {
 			break;
 			case "Box4":
 			RollRock(_gameobject,18,23);
+			notifMe.Notification("No way to go out");
 			GameOver();
 			break;
 			case "Box5":
 			RollRock(_gameobject,3,4);
+			notifMe.Notification("You blocked the door");
 			GameOver();
 			break;
 			case "Box6":
@@ -169,6 +187,7 @@ public class Character : MonoBehaviour {
 			break;
 			case "Box8":
 			RollRock(_gameobject,17,12);
+			notifMe.Notification("You woke up the Dragon");
 			GameOver();
 			break;
 			case "Grass1":
@@ -237,11 +256,25 @@ public class Character : MonoBehaviour {
 			startpos = 2;
 			SceneManager.LoadScene("Level03");
 		}
+		if(isometricmanger.unitys[(path[index].x * mygrid.GridSize + path[index].y)].name == "0_3" && Application.loadedLevelName == "Level03")
+		{
+			GameWon();
+		}
+
 	}
 		
 	void GameOver(){
-		Debug.Log("wee" + gameovertext.text);
-		gameovertext.text = "Game Over";
+//		Debug.Log("wee" + gameovertext.text);
+//		gameovertext.text = "Game Over";
+		_gameOver.SetActive(true);
+		gameover = true;
+		StartCoroutine(DelayRestart());
+	}
+
+	void GameWon(){
+		//		Debug.Log("wee" + gameovertext.text);
+		//		gameovertext.text = "Game Over";
+		_congrats.SetActive(true);
 		gameover = true;
 		StartCoroutine(DelayRestart());
 	}
@@ -252,8 +285,8 @@ public class Character : MonoBehaviour {
 		//DoSomething();
 
 		yield return new WaitForSeconds(2);
-
-		gameovertext.text = "Click to Restart";
+		_restart.SetActive(true);
+		//gameovertext.text = "Click to Restart";
 		restart = true;
 	}
 

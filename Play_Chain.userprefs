@@ -2,13 +2,12 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/Character.cs">
     <Files>
-      <File FileName="Assets/script/Character.cs" Line="162" Column="15" />
+      <File FileName="Assets/script/Character.cs" Line="160" Column="38" />
       <File FileName="Assets/script/IsometricManger.cs" Line="1" Column="1" />
-      <File FileName="Assets/script/NotifyMe.cs" Line="28" Column="28" />
+      <File FileName="Assets/script/NotifyMe.cs" Line="13" Column="5" />
       <File FileName="Assets/script/Unitys.cs" Line="13" Column="3" />
-      <File FileName="Assets/script/SquareGrid.cs" Line="1" Column="1" />
+      <File FileName="Assets/script/SquareGrid.cs" Line="33" Column="6" />
       <File FileName="Assets/script/AstartPathFinding.cs" Line="1" Column="1" />
-      <File FileName="Assets/script/Old/CharMove.cs" Line="38" Column="49" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

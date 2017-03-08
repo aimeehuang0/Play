@@ -9,7 +9,8 @@ public class NotifyMe : MonoBehaviour {
 	public Text notifArea;
 	// Use this for initialization
 	void Start(){
-		notifArea.text = "Every Step you take will have consequences";
+		//notifArea.text = "Be careful where you walk";
+		//notifArea.text = "";
 	}
 
 	// Update is called once per frame

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Chain_isometric.unity
+- path: Assets/Level03.unity
   isLoaded: 1
   isActive: 1
